@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cal2.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="toggle"></div>
+    <div class="calculator">
+       <div class="button">
+             <h2 id="value"></h2>
+             <span id="clear">C</span>
+             <span id="del">del</span>
+             <span>/</span>
+             <span>*</span>
+             <span>7</span>
+             <span>8</span>
+             <span>9</span>
+             <span id ="minus">-</span>
+             <span>4</span>
+             <span>5</span>
+             <span>6</span>
+             <span id="plus">+</span>
+             <span>1</span>
+             <span>2</span>
+             <span>3</span>
+             <span id="zero">0</span>
+             <span>.</span>
+             <span id="equal">=</span>
+             
+       </div>
+    </div>
+    
+    <script>
+        let button = document.querySelector('.button');
+        let btn = document.querySelectorAll('span');
+        let value = document.getElementById('value');
+        let toggle=document.querySelector('.toggle');
+        let body = document.querySelector('body');
+        for(let i=0;i<btn.length;i++)
+        {
+            btn[i].addEventListener("click",function(){
+
+                if(this.innerHTML=="="){
+                    value.innerHTML = eval(value.innerHTML);
+
+                }else{
+                    if(this.innerHTML=="C"){
+                        value.innerHTML = "";
+    
+                    }
+                    else{
+                        if(this.innerHTML=="del"){
+                            let s= value.innerHTML;
+                            s = s.slice(0,s.length-1);
+                            value.innerHTML = s;
+        
+                        }
+                        else{
+                        value.innerHTML += this.innerHTML;
+                    }
+                }
+
+                }
+            })
+        }
+        toggle.onclick = function(){
+            body.classList.toggle('dark');
+
+        }
+    </script>
+</body>
+</html>
